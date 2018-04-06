@@ -18,7 +18,6 @@ const arcGenerator = d3
 // Our BarChart, lightly adapted to take a onHover callback
 // and the index of the currently hovered item
 const BarChart = ({ data, onHover, hoverIndex }) => {
-  // One unit less than the min/max coordinates on our graph
   const minXPos = 1
   const maxXPos = 9
   const maxYPos = 9
@@ -26,22 +25,14 @@ const BarChart = ({ data, onHover, hoverIndex }) => {
   const totalWidth = maxXPos - minXPos
   const widthPerElement = totalWidth / (data.length * 2 - 1)
 
-  // Scale input domain from 0 to the max value in the data set
-  // to an input range of 0, 8 (for some padding)
   const scaleValue = d3
     .scaleLinear()
     .domain([0, Math.max(...data)])
     .range([0, 8])
 
-  // Takes the index of the item in our data array and
-  // returns the position of the top-left point
   const scalePosition = d3
     .scaleLinear()
     .domain([0, data.length - 1])
-    // Uses widthPerElement to offset the top-left point
-    // by however wide our box happens to be. So as long
-    // as the last box has width = widthPerElement, then
-    // it will just touch the maxXPos
     .range([minXPos, maxXPos - widthPerElement])
 
   const boxes = data.map((value, i) => {
@@ -76,10 +67,7 @@ const BarChart = ({ data, onHover, hoverIndex }) => {
 // Our pie chart, modified to take the onHover callback
 // and hoverIndex
 const PieChart = ({ data, onHover, hoverIndex }) => {
-  // Create an array of arc properties
   const pieArcs = d3.pie()(data)
-
-  // Create the 'd' attrbutes from the arc properties
   const arcPaths = pieArcs.map(arcGenerator)
 
   return (
