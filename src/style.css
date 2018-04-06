@@ -3,9 +3,7 @@ body {
   text-align: center;
 }
 
-svg {
-  max-height: 350px;
-  max-width: 350px;
+#root > div {
   background-color: #ddd;
   background-image: linear-gradient(45deg, #fff 25%, transparent 25%),
     linear-gradient(-45deg, #fff 25%, transparent 25%),
@@ -13,4 +11,15 @@ svg {
     linear-gradient(-45deg, transparent 75%, #fff 75%);
   background-size: 20px 20px;
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  max-width: 500px;
+  margin: auto;
+}
+
+svg {
+  max-height: 250px;
+  max-width: 250px;
+}
+
+svg * {
+  stroke-width: 0.1;
 }
