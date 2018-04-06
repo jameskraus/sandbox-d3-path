@@ -14,7 +14,6 @@ const arcGenerator = d3
   .arc()
   .outerRadius(4)
   .innerRadius(0)
-  .startAngle(0)
 
 // Create an array of arc properties
 const pieArcs = d3.pie()(data)
